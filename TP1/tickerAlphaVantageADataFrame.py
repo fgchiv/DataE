@@ -2,6 +2,7 @@ import requests as r
 import pandas as pd
 from dotenv import load_dotenv
 import os
+from sqlalchemy import create_engine
 
 load_dotenv()
 apiKey = os.getenv("ALPHA_VANTAGE_API_KEY")
@@ -39,3 +40,7 @@ dataFr['split_coef'] = dataFr['split_coef'].astype(float)
 dataFr['date'] = dataFr['date'].astype('datetime64[s]')
 
 print(dataFr.info())
+
+engine = create_engine('postgresql://francojosegonzalez_coderhouse:0daNA8HJ56@data-engineer-cluster.cyhh5bfevlmn.us-east-1.redshift.amazonaws.com:5439/data-engineer-database')
+
+dataFr.to_sql('ypf', engine, if_exists = 'append', index = False)
