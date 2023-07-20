@@ -41,6 +41,3 @@ dataFr['date'] = dataFr['date'].astype('datetime64[s]')
 
 print(dataFr.info())
 
-engine = create_engine('postgresql://francojosegonzalez_coderhouse:0daNA8HJ56@data-engineer-cluster.cyhh5bfevlmn.us-east-1.redshift.amazonaws.com:5439/data-engineer-database')
-
-dataFr.to_sql('ypf', engine, if_exists = 'append', index = False)
