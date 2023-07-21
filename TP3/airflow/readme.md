@@ -1,6 +1,7 @@
 # ApiML
 ETL de datos de MercadoLibre para construir un historial de precios de determinados productos de interés.
 Puede definir nuevos productos para incluir en el script, modificando el archivo ./apiMLFiles/ApiML.json. Debe agregar los datos estructurados de la siguiente forma, separados de los anteriores y posteriores por ",":
+
     {
         "searchTerms": "palabras a buscar",
         "keywords": ["par", "set", "juego"...], 
@@ -21,8 +22,10 @@ Además de filtrar por estas palabras clave, el script utiliza otros métodos pa
 3. Copiar el archivo dag_api_ml.py en la carpeta ./dags
 4. Copiar ApiML.json en ./apiMlFiles
 5. Crear el archivo .env en la raíz con los siguientes datos:
-    AIRFLOW_UID=501
-    AIRFLOW_GID=0
+~~~
+AIRFLOW_UID=501
+AIRFLOW_GID=0
+~~~
 6. Con la terminal situada en la raíz donde está docker-compose.yaml, ejecutar el comando "docker-compose up airflow-init"
 7. Luego, ejecutar "docker-compose up". En la primera ejecución va a tomar su tiempo
 8. Podrá acceder a la interfaz web de Airflow en la dirección localhost:8080
